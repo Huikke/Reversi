@@ -4,6 +4,7 @@ def print_board():
     
     coord_num = 1
     # Prints numbers on the side of the board
+    # There is two spaces between every piece
     for row in board:
         print(coord_num, row[0], "",row[1], "",row[2], "",row[3], "",row[4], "",row[5], "",row[6], "", row[7], coord_num)
         coord_num += 1
@@ -13,8 +14,8 @@ def print_board():
 
 # Converts an input to a form python understands
 def move_convert(move: str) -> int:
-    # Converts input letter to number
-    # Also checks if an input is valid
+    # Converts input coord letter to number
+    # Check if the input is valid
     col = move[0]
     if col == "A":
         col = 0
@@ -35,11 +36,10 @@ def move_convert(move: str) -> int:
     else:
         return "Error", "Error"
     
-    # Checks if an input is valid
+    # Converts input coord number subtracting 1
+    # Check if the input is valid
     try:
-        # Decrease input number by 1
         row = int(move[1]) - 1
-        # Checks if the input is valid
         if row < 0 or row > 7:
             return "Error", "Error"
     except ValueError:
